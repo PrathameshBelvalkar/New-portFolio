@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+:root {
+    --primary-color: #08090a;
+    --secondary-color: #737373;
+    --background-color: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+}
+
+.portfolio-main {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 47rem;
+    font-family: "Inter", serif !important;
+}
+
+.hero-description {
+    max-width: 500px;
+    font-size: 20px;
+}
+
+.profile-image {
+    height: 176px;
+}
+
+.title-text {
+    font-weight: 800 !important;
+}
+
+.wavy-hand-small {
+    display: none;
+}
+
+.headline-text {
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.about-content p a {
+    /* color: var(--primary-color); */
+}
+
+.education-image {
+    height: 48px;
+}
+
+.education-content span {
+    font-size: 14px;
+}
+
+.education-content small {
+    font-size: 12px;
+}
+
+.education-year {
+    font-size: 14px;
+}
+
+@media screen and (max-width: 768px) {
+    .profile-image {
+        height: 120px;
+    }
+
+    .hero-description {
+        font-size: 16px;
+    }
+
+}
+
+@media screen and (max-width: 425px) {
+    main {
+        padding: 10px;
+    }
+
+    .wavy-hand {
+        display: none;
+    }
+
+    .wavy-hand-small {
+        display: block;
+    }
+
+}
