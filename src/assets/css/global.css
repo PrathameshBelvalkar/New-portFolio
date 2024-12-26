@@ -24,7 +24,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    max-width: 47rem;
+    max-width: 42rem;
     font-family: "Inter", serif !important;
 }
 
@@ -66,8 +66,62 @@ body {
     font-size: 12px;
 }
 
-.education-year {
+.education-year,
+.experience-year {
+    font-size: 13px;
+}
+
+.experience-content span,
+.project-content span {
+    font-size: 16px;
+}
+
+.experience-content small,
+.project-content small {
     font-size: 14px;
+    text-decoration: underline;
+}
+
+.experience-content p,
+.project-content p {
+    font-size: 13px;
+    margin-top: 10px;
+}
+
+.experience-content,
+.project-content {
+    max-width: 450px;
+}
+
+.skill-tag {
+    display: flex;
+    align-items: center;
+    border-radius: 9999px;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    line-height: 1.25rem;
+    margin-right: 2px;
+    margin-bottom: 5px;
+}
+
+.project-image img {
+    height: 100px;
+}
+
+.divider {
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+}
+
+.divider::before,
+.divider::after {
+    flex: 1;
+    content: '';
+    padding: 0.5px;
+    background-color: var(--secondary-color);
+    margin: 5px;
 }
 
 @media screen and (max-width: 768px) {
@@ -86,6 +140,10 @@ body {
         padding: 10px;
     }
 
+    .experience-year-div {
+        display: none;
+    }
+
     .wavy-hand {
         display: none;
     }
@@ -94,4 +152,16 @@ body {
         display: block;
     }
 
+}
+
+@media (max-width: 663px) {
+    .d-flex-column-on-small {
+        flex-direction: column !important;
+    }
+
+    .project-image {
+        margin-bottom: 1rem;
+        width: 100%;
+        max-width: 450px;
+    }
 }

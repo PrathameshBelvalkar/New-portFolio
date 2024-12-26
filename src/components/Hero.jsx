@@ -5,8 +5,8 @@ import HeroImage from "../assets/images/hero_image.png";
 export default function Hero() {
     return (
         <section id="hero">
-            <div className="hero-container">
-                <div className="align-items-center d-flex gap-1 hero-content justify-content-center">
+            <div className="hero-container mt-5">
+                <div className="align-items-center d-flex gap-1 hero-content ">
                     <motion.div
                         className="hero-text"
                         initial={{ filter: "blur(20px)", opacity: 0, y: 50 }}
@@ -14,7 +14,7 @@ export default function Hero() {
                         transition={{ duration: 0.5, ease: "easeOut" }}
                     >
                         <div className="hero-title">
-                            <span className="title-text display-4">Hi, I'm <span className="">Prathamesh</span><span className="wavy-hand">👋</span></span>
+                            <span className="title-text display-4">Hi, I'm <br /><span className="">Prathamesh</span><span className="wavy-hand">👋</span></span>
                         </div>
                         <div className="hero-description mt-1">
                             <span className="description-text text-muted">
