@@ -22,7 +22,9 @@ export default function ContactUs() {
                         <div className='col-md-6'>
                             <textarea name="message" id="contact_message" className="contact_textarea" rows={5} placeholder='Enter Message'></textarea>
                         </div>
-                        <button type='button' className='contact_submit m-auto'>Send Message</button>
+                        <div className='row m-auto'>
+                            <button type='button' className='contact_submit m-auto'>Send Message</button>
+                        </div>
                     </form>
                 </div>
             </motion.div>
