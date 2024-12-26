@@ -8,7 +8,7 @@ const educationData = [
     {
         id: 1,
         image: KitImer,
-        school: "Kolhapur Institute Of Technology",
+        school: "Kolhapur Institute of Technology",
         degree: "Master's of Computer Application",
         year: "2021 - 2023",
     },
