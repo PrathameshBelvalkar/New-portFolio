@@ -6,47 +6,60 @@ import CarbonExchnage from "../assets/images/project/CarbonExchange.png";
 import QrImage from "../assets/images/project/QR.png";
 import DiverseImage from "../assets/images/project/DiverseServices.png";
 import Bluemoose from "../assets/images/project/BlueMoose.png";
+
 const workExperiences = [
     {
         role: "Full Stack Developer",
         company: "Noitavonne",
         duration: "Aug 2023 - Dec 2024",
         description: "Expert in crafting responsive, user-centric interfaces, ensuring seamless frontend-backend integration. Conducted thorough user research, implemented pixel-perfect designs, and delivered scalable, user-friendly web applications focused on usability, efficiency, and modern standards.",
-        skills: ["React Js", "JavaScript", "PHP", "MySQL", "Laravel 10", "CodeIgniter 3", "Express Js", "HTML5 and CSS3", "Bootstrap 5", "Tailwind CSS", "Git", "GitHub"]
+        skills: ["React Js", "JavaScript", "PHP", "MySQL", "Laravel 10", "CodeIgniter 3", "Express Js", "HTML5 and CSS3", "Bootstrap 5", "Tailwind CSS", "Git", "GitHub"],
+        link: "https://www.noitavonne.com"
     }
 ];
+
 const projects = [
     {
         title: "StreamDeck & Tv",
         description: "StreamDeck is a streaming management tool used for broadcasting and controlling live streams, integrating with TV.silocloud.io. It enables users to program and schedule content using EPG (Electronic Program Guide), providing a seamless streaming experience.",
         skills: ["React Js", "Laravel 10", "MySql", "FFmpeg", "RTMP", "WebRTC", "Node Js", "Socket.io"],
-        image: StreamDeck
+        image: StreamDeck,
+        link: "https://streamdeck.silocloud.io/"
     },
     {
         title: "CarbonExchange",
         description: "Alexander’s Carbon Exchange is a blockchain-based platform enabling transparent carbon credit trading, connecting producers and buyers to promote sustainable practices and combat climate change for a greener future.",
         skills: ["Html5 and CSS3", "JavaScript", "MySql", "MapBox API", "REGRID API"],
-        image: CarbonExchnage
+        image: CarbonExchnage,
+        link: "https://carbonexchange.ai"
     },
     {
         title: "QR Code Generator",
-        description: "The QR Code Generator allows users to create both static and dynamic QR codes for various purposes, enhancing digital interaction and accessibility.It provides an easy- to - use platform for generating QR codes that can be used for websites, and other applications.",
+        description: "The QR Code Generator allows users to create both static and dynamic QR codes for various purposes, enhancing digital interaction and accessibility. It provides an easy-to-use platform for generating QR codes that can be used for websites, and other applications.",
         skills: ["React Js", "Laravel 10", "MySql"],
-        image: QrImage
+        image: QrImage,
+        link: "https://qr-code-generator.com"
     },
     {
         title: "DiverseServices",
         description: "Diverse Multi Services, LLC offers comprehensive services, including tax preparation, bookkeeping, printing, and notary support, serving the DFW Metroplex and all 50 states to meet diverse community needs.",
         skills: ["React Js", "Laravel 10", "MySql"],
-        image: DiverseImage
+        image: DiverseImage,
+        link: "https://diverseservices.com"
     },
     {
         title: "BlueMoose API",
         description: "Creating an API for bluemoose Tv that will generate subtitles of English Video and translate them using deep translate.",
         skills: ["React Js", "Laravel 10", "MySql", "Flask", "Python", "Open AI"],
-        image: Bluemoose
+        image: Bluemoose,
+        link: "https://elastic-sutherland.174-143-48-203.plesk.page/"
     }
 ];
+
+// Function to handle redirection
+const handleRedirect = (url) => {
+    window.open(url, "_blank");
+};
 
 export default function WorkExperience() {
     return (
@@ -65,7 +78,10 @@ export default function WorkExperience() {
                         <div className='d-flex gap-2 align-items-center'>
                             <div className='d-flex flex-column experience-content'>
                                 <span className='fw-bolder'>{experience.role}</span>
-                                <small>
+                                <small
+                                    onClick={() => handleRedirect(experience.link)}
+                                    style={{ cursor: "pointer" }}
+                                >
                                     {experience.company}
                                     <ArrowUpRight size={16} />
                                 </small>
@@ -98,7 +114,10 @@ export default function WorkExperience() {
                         <div>
                             <div className='d-flex flex-column project-content'>
                                 <span className='fw-bolder'>{project.title}</span>
-                                <small>
+                                <small
+                                    onClick={() => handleRedirect(project.link)}
+                                    style={{ cursor: "pointer" }}
+                                >
                                     Visit Here
                                     <ArrowUpRight size={16} />
                                 </small>

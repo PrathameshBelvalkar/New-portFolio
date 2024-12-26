@@ -28,6 +28,7 @@ export default function ContactUs() {
                     </form>
                 </div>
             </motion.div>
+            <div className='mt-5'></div>
         </section>
     )
 }

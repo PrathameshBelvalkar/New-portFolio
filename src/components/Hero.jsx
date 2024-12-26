@@ -5,11 +5,9 @@ import HeroImage from "../assets/images/hero_image.png";
 export default function Hero() {
     const texts = [
         "Hi, I'm",
-        "नमस्कार, मी",
-        "नमस्ते, मैं",
+        "नमस्कार, अहं",
         "こんにちは、私は",
         "Hallo, ich bin",
-        "नमस्कार, अहं",
         "안녕하세요, 저는",
         "Привет, я",
     ];
