@@ -79,6 +79,7 @@ body {
 .experience-content small,
 .project-content small {
     font-size: 14px;
+    cursor: pointer;
     text-decoration: underline;
 }
 
@@ -124,6 +125,35 @@ body {
     margin: 5px;
 }
 
+.contact_input,
+.contact_textarea {
+    font-size: 13px;
+    line-height: 26px;
+    border: 1px solid #bdbdbd;
+    box-shadow: none;
+    width: 100%;
+    outline: none;
+    border-radius: 0px;
+    resize: none;
+    padding-left: 20px;
+}
+
+.contact_input {
+    height: 40px;
+}
+
+.contact_submit {
+    max-width: 42rem !important;
+    background: #000;
+    height: 40px;
+    border: none;
+    color: #fff;
+}
+
+.experience-year-small {
+    display: none;
+}
+
 @media screen and (max-width: 768px) {
     .profile-image {
         height: 120px;
@@ -152,6 +182,10 @@ body {
         display: block;
     }
 
+    .experience-year-small {
+        display: block;
+        font-size: 13px !important;
+    }
 }
 
 @media (max-width: 663px) {

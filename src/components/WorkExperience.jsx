@@ -10,7 +10,7 @@ const workExperiences = [
     {
         role: "Full Stack Developer",
         company: "Noitavonne",
-        duration: "August 2023 - December 2024",
+        duration: "Aug 2023 - Dec 2024",
         description: "Expert in crafting responsive, user-centric interfaces, ensuring seamless frontend-backend integration. Conducted thorough user research, implemented pixel-perfect designs, and delivered scalable, user-friendly web applications focused on usability, efficiency, and modern standards.",
         skills: ["React Js", "JavaScript", "PHP", "MySQL", "Laravel 10", "CodeIgniter 3", "Express Js", "HTML5 and CSS3", "Bootstrap 5", "Tailwind CSS", "Git", "GitHub"]
     }
@@ -69,6 +69,7 @@ export default function WorkExperience() {
                                     {experience.company}
                                     <ArrowUpRight size={16} />
                                 </small>
+                                <span className='text-muted experience-year-small'>{experience.duration}</span>
                                 <p>{experience.description}</p>
                                 <ul className='d-flex list-unstyled flex-wrap'>
                                     {experience.skills.map((skill, skillIndex) => (
