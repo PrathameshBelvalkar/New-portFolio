@@ -1,14 +1,28 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect, useRef } from "react";
 import { Github, Linkedin, Mail, Moon, Paperclip, Sun } from "lucide-react";
 import { Tooltip } from "reactstrap";
 import { ThemeContext } from "../context/ThemeContext";
 
 const IconWithTooltip = ({ id, icon, tooltipText, onClick }) => {
     const [tooltipOpen, setTooltipOpen] = useState(false);
+    const tooltipRef = useRef(null);
 
     const toggleTooltip = () => {
         setTooltipOpen(!tooltipOpen);
     };
+
+    const closeTooltip = (e) => {
+        if (tooltipRef.current && !tooltipRef.current.contains(e.target)) {
+            setTooltipOpen(false);
+        }
+    };
+
+    useEffect(() => {
+        document.addEventListener("mousedown", closeTooltip);
+        return () => {
+            document.removeEventListener("mousedown", closeTooltip);
+        };
+    }, []);
 
     return (
         <div
@@ -16,6 +30,7 @@ const IconWithTooltip = ({ id, icon, tooltipText, onClick }) => {
             id={id} // Apply id directly to the container
             onClick={onClick}
             style={{ cursor: "pointer" }}
+            ref={tooltipRef}
         >
             {icon()}
             <Tooltip
@@ -63,7 +78,7 @@ export default function PersonalLinkDown() {
                         <Moon strokeWidth={1.25} />
                     )
                 }
-                // tooltipText={theme === "light" ? "Switch to Dark Mode" : "Switch to Light Mode"}
+                tooltipText={theme === "light" ? "Switch to Dark Mode" : "Switch to Light Mode"}
                 onClick={toggleTheme}
             />
             <IconWithTooltip
