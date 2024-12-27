@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Github, Instagram, Linkedin, Mail, Paperclip } from 'lucide-react';
+import { BookText, Github, Instagram, Linkedin, Mail, Paperclip } from 'lucide-react';
 import { Tooltip } from 'reactstrap'; // Import Tooltip from reactstrap
 
 // Reusable Tooltip Component
@@ -45,6 +45,12 @@ export default function PersonalLinks() {
                 icon={(props) => <Linkedin {...props} />}
                 tooltipText="LinkedIn"
                 onClick={() => window.open('https://www.linkedin.com/in/prathamesh-belvalkar-83b72a267/', '_blank')}
+            />
+            <IconWithTooltip
+                id="stories"
+                icon={(props) => <BookText {...props} />}
+                tooltipText="Stories"
+                onClick={() => window.open('/blog', '_blank')}
             />
             <IconWithTooltip
                 id="mail"
