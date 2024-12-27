@@ -6,7 +6,7 @@ export default function Hero() {
     const texts = [
         "Hi, I'm",
         "नमस्कार, अहं",
-        "こんにちは、私は",
+        "こんにちは",
         "Hallo, ich bin",
         "안녕하세요, 저는",
         "Привет, я",
