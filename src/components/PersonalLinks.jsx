@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { Download, Github, Instagram, Linkedin, Mail } from 'lucide-react';
+import { Github, Instagram, Linkedin, Mail, Paperclip } from 'lucide-react';
 import { Tooltip } from 'reactstrap'; // Import Tooltip from reactstrap
 
 // Reusable Tooltip Component
-const IconWithTooltip = ({ id, icon, tooltipText }) => {
+const IconWithTooltip = ({ id, icon, tooltipText, onClick }) => {
     const [tooltipOpen, setTooltipOpen] = useState(false);
 
     const toggleTooltip = () => {
@@ -11,7 +11,9 @@ const IconWithTooltip = ({ id, icon, tooltipText }) => {
     };
 
     return (
-        <div className='personal-link-box'>
+        <div className='personal-link-box'
+            onClick={onClick}
+            style={{ cursor: 'pointer' }}>
             {icon({
                 id,
                 onMouseEnter: toggleTooltip,
@@ -36,26 +38,25 @@ export default function PersonalLinks() {
                 id="github"
                 icon={(props) => <Github {...props} />}
                 tooltipText="GitHub"
+                onClick={() => window.open('https://github.com/PrathameshBelvalkar', '_blank')}
             />
             <IconWithTooltip
                 id="linkedin"
                 icon={(props) => <Linkedin {...props} />}
                 tooltipText="LinkedIn"
-            />
-            <IconWithTooltip
-                id="instagram"
-                icon={(props) => <Instagram {...props} />}
-                tooltipText="Instagram"
+                onClick={() => window.open('https://www.linkedin.com/in/prathamesh-belvalkar-83b72a267/', '_blank')}
             />
             <IconWithTooltip
                 id="mail"
                 icon={(props) => <Mail {...props} />}
                 tooltipText="Mail"
+                onClick={() => window.open('mailto:pprathameshbelvalkar544@gmail.com', '_blank')}
             />
             <IconWithTooltip
                 id="download"
-                icon={(props) => <Download {...props} />}
+                icon={(props) => <Paperclip  {...props} />}
                 tooltipText="Download Resume"
+                onClick={() => window.open('/resume.pdf', '_blank')}
             />
         </div>
     );
