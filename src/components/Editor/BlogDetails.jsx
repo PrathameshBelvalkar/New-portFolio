@@ -1,4 +1,3 @@
-// BlogDetails.jsx
 import React, { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import EditorJS from "@editorjs/editorjs";
@@ -15,6 +14,7 @@ import Embed from "@editorjs/embed";
 import SimpleImage from "@editorjs/simple-image";
 import EditorjsList from "@editorjs/list";
 import Hyperlink from "editorjs-hyperlink";
+import { Spinner } from "reactstrap";
 
 export default function BlogDetails() {
     const { title } = useParams(); // Retrieve the blog title from the URL
@@ -22,6 +22,7 @@ export default function BlogDetails() {
     const undoInstance = useRef(null);
     const [blogData, setBlogData] = useState(null);
     const [error, setError] = useState(null);
+    const [blogLoading, setBlogLoading] = useState(false);
 
     // Function to map blog titles to JSON file paths
     const getBlogFilePath = (title) => {
@@ -61,6 +62,7 @@ export default function BlogDetails() {
         }
 
         try {
+            setBlogLoading(true);
             const response = await fetch(filePath);
             if (!response.ok) {
                 throw new Error("Blog data not found");
@@ -70,13 +72,14 @@ export default function BlogDetails() {
         } catch (err) {
             console.error("Error fetching blog data:", err);
             setError("Failed to load blog content.");
+        } finally {
+            setBlogLoading(false);
         }
     };
 
     // Function to initialize EditorJS with fetched data
     const initEditor = (data) => {
         if (ejInstance.current) {
-            // If an instance already exists, destroy it before creating a new one
             ejInstance.current.destroy();
             ejInstance.current = null;
         }
@@ -195,8 +198,10 @@ export default function BlogDetails() {
 
     // Fetch blog data when the component mounts or when the title changes
     useEffect(() => {
-        fetchBlogData();
-    }, [title]);
+        if (!blogData) {
+            fetchBlogData(); // Only fetch if blogData is not available
+        }
+    }, [title, blogData]);
 
     // Initialize EditorJS when blogData is available
     useEffect(() => {
@@ -211,6 +216,9 @@ export default function BlogDetails() {
         };
     }, [blogData]);
 
+    if (blogLoading) {
+        return <Spinner />;
+    }
     if (error) {
         return <div className="error-message">{error}</div>;
     }
