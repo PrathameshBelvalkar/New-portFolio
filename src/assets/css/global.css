@@ -341,3 +341,7 @@ body {
     width: 400px;
     transform: translate(-50%);
 }
+
+.codex-editor__redactor {
+    padding-bottom: 0px !important;
+}

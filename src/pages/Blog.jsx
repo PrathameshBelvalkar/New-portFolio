@@ -95,7 +95,7 @@ export default function Blog() {
                     </motion.div>
                 ))}
             </div>
-            <div className='mt-3'>
+            {/* <div className='mt-3'>
                 <div className='d-flex justify-content-center gap-2 mb-2'>
                     <button className='pagination-previous pagination-button'><ChevronLeft /></button>
                     <button className='pagination-current pagination-button'>1</button>
@@ -106,7 +106,7 @@ export default function Blog() {
                     <button className='pagination-number pagination-button'>10</button>
                     <button className='pagination-next pagination-button'><ChevronRight /></button>
                 </div>
-            </div>
+            </div> */}
         </div>
     );
 }
