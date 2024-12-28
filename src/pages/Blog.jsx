@@ -3,72 +3,72 @@ import React from 'react';
 import { motion } from "framer-motion";
 const blogData = [
     {
-        category: "TECHNOLOGY",
-        title: "AI in Everyday Life",
-        description: "Artificial intelligence is reshaping how we interact with technology daily, from smart assistants to recommendation systems...",
+        category: "ARTIFICIAL INTELLIGENCE",
+        title: "Forget ChatGPT & Claude: Here Are 6 (New & Free) AI Tools That Will Blow Your Mind",
+        description: "Let’s be real — most people using AI are stuck in 2023.They think ChatGPT and Claude are the peak of innovation. Sure, they’re impressive — but if that’s all you’re using, you’re doing it wrong. ...",
         date: "25 December 2024",
         readTime: "5 min"
     },
     {
-        category: "HEALTH",
-        title: "The Benefits of Regular Exercise",
-        description: "Exercise not only keeps you fit but also boosts mental health and overall well-being...",
+        category: "ARTIFICIAL INTELLIGENCE",
+        title: "ChatGPT: Changing the Landscape of Coding Standards",
+        description: "In recent years, ChatGPT has revolutionized the way developers approach software development. As an AI-powered language model, it assists with tasks ranging...",
         date: "22 December 2024",
         readTime: "4 min"
     },
     {
-        category: "FINANCE",
-        title: "Understanding Cryptocurrency",
-        description: "Cryptocurrency is a digital currency that operates independently of a central authority...",
+        category: "TECHNOLOGY",
+        title: "The Future of Quantum Computing: A Tomorrow’s Technology",
+        description: "Quantum computing, once a concept confined to science fiction, is steadily progressing towards becoming a reality that could revolutionize numerous industries. ...",
         date: "20 December 2024",
         readTime: "7 min"
     },
     {
-        category: "ETHICS",
-        title: "The Ethical Dilemmas of AI",
-        description: "As AI becomes more pervasive, ethical considerations about its use and impact grow increasingly important...",
+        category: "TECHNOLOGY",
+        title: "Why Linux and Not Windows?",
+        description: "Linux has carved a niche for itself across servers, embedded systems, and increasingly, desktops as well. Let’s explore why many users, developers, and organizations choose Linux over Windows and why you might consider switching too....",
         date: "18 December 2024",
         readTime: "6 min"
     },
     {
-        category: "ENVIRONMENT",
-        title: "Climate Change and Its Impact",
-        description: "Climate change poses one of the biggest challenges to humanity, affecting ecosystems and economies worldwide...",
+        category: "ARTIFICIAL INTELLIGENCE",
+        title: "Introducing OpenAi Whisper",
+        description: "Whisper is an automatic speech recognition (ASR) system trained on 680,000 hours of multilingual and multitask supervised data collected from the web. We show that the use of such a large and...",
         date: "15 December 2024",
         readTime: "8 min"
     },
     {
-        category: "EDUCATION",
-        title: "Online Learning Trends",
-        description: "With advancements in technology, online learning is becoming more accessible and effective for students globally...",
+        category: "TECHNOLOGY",
+        title: "Sending Email with Laravel 10 and Gmail",
+        description: "Sending email with Gmail via a third-party application has undergone several changes for security reasons. Now to send email using Google SMTP you need to activate 2 step verification...",
         date: "12 December 2024",
         readTime: "5 min"
     },
     {
-        category: "TRAVEL",
-        title: "Top Destinations for 2025",
-        description: "Explore the best travel destinations for the upcoming year, offering breathtaking views and cultural experiences...",
+        category: "TECHNOLOGY",
+        title: "TanStack Query v5: A Guide to Installation and Basic Fetch Example",
+        description: "When building modern web applications, managing server state efficiently is crucial. TanStack Query (formerly React Query) has become the go-to library for handling server state in React applications...",
         date: "10 December 2024",
         readTime: "6 min"
     },
     {
         category: "TECHNOLOGY",
-        title: "The Future of Quantum Computing",
-        description: "Quantum computing promises to revolutionize industries by solving problems beyond the reach of classical computers...",
+        title: "17 Mindblowing Github Repositories You Never Knew Existed",
+        description: "Learning to code is relatively easy, but mastering the art of writing better code is much tougher. GitHub serves as a treasure trove for developers, where the...",
         date: "8 December 2024",
         readTime: "9 min"
     },
     {
-        category: "HEALTH",
-        title: "Nutrition Myths Debunked",
-        description: "Separating fact from fiction in the world of nutrition can help you make informed dietary choices...",
+        category: "TECHNOLOGY",
+        title: "🚀PHP8.4 is Here: Discover What's New with Examples!",
+        description: "The latest release of PHP, <b>PHP 8.4,</b> is packed with features that simplify code, improve performance, and align with modern development practices. Here’s a quick look at the highlights...",
         date: "5 December 2024",
         readTime: "5 min"
     },
     {
-        category: "FINANCE",
-        title: "Investing for Beginners",
-        description: "Learn the basics of investing and how to grow your wealth over time with smart financial decisions...",
+        category: "TECHNOLOGY",
+        title: "A Comprehensive Guide to FFmpeg: Installation and Basic Commands",
+        description: "A powerful open-source tool for handling multimedia data, including audio, video, and other related files. It is widely used by developers, media professionals...",
         date: "2 December 2024",
         readTime: "7 min"
     }

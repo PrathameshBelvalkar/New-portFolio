@@ -23,6 +23,7 @@
     "bootstrap": "^5.3.3",
     "editorjs-alert": "^1.1.4",
     "editorjs-drag-drop": "^1.1.16",
+    "editorjs-hyperlink": "^1.0.6",
     "editorjs-undo": "^2.0.28",
     "lucide-react": "^0.469.0",
     "motion": "^11.15.0",

@@ -12,6 +12,7 @@ import InlineCode from "@editorjs/inline-code";
 import Embed from "@editorjs/embed";
 import SimpleImage from "@editorjs/simple-image";
 import EditorjsList from '@editorjs/list';
+import Hyperlink from "editorjs-hyperlink";
 const DEFAULT_INITIAL_DATA = {
     "time": 1735367070123,
     "blocks": [
@@ -121,6 +122,17 @@ export default function EditBlog() {
                 },
                 Marker: {
                     class: Marker,
+                },
+                hyperlink: {
+                    class: Hyperlink,
+                    config: {
+                        shortcut: 'CMD+L',
+                        target: '_blank',
+                        rel: 'nofollow',
+                        availableTargets: ['_blank', '_self'],
+                        availableRels: ['author', 'noreferrer'],
+                        validate: false,
+                    }
                 },
                 inlineCode: {
                     class: InlineCode,
