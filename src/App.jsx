@@ -4,7 +4,7 @@ import Layout from './layout';
 const Home = lazy(() => import('./pages/Home'));
 const Blog = lazy(() => import('./pages/Blog'));
 const ErrorPage = lazy(() => import('./pages/ErrorPage'));
-const EditBlog = lazy(() => import('./components/Editor/EditBlog'));
+const BlogDetails = lazy(() => import('./components/Editor/BlogDetails'));
 export default function App() {
   return (
     <Suspense fallback={<span className='display-6'>Loading...</span>}>
@@ -12,7 +12,7 @@ export default function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="/blog" element={<Blog />} />
-          <Route path="/edit-blog" element={<EditBlog />}></Route>
+          <Route path="/blog/:title" element={<BlogDetails />}></Route>
           <Route path="*" element={<ErrorPage />} />
         </Route>
       </Routes>

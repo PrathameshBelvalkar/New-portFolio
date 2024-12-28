@@ -52,12 +52,12 @@ export default function PersonalLinks() {
                 tooltipText="Stories"
                 onClick={() => window.open('/blog', '_blank')}
             />
-            <IconWithTooltip
+            {/* <IconWithTooltip
                 id="mail"
                 icon={(props) => <Mail {...props} />}
                 tooltipText="Mail"
                 onClick={() => window.open('mailto:pprathameshbelvalkar544@gmail.com', '_blank')}
-            />
+            /> */}
             <IconWithTooltip
                 id="download"
                 icon={(props) => <Paperclip  {...props} />}
