@@ -59,7 +59,7 @@ export default function Hero() {
                         </div>
                         <div className="hero-description mt-1">
                             <span className="description-text text-muted">
-                                Software Engineer turned Entrepreneur. I love building things and helping people. Very active on Twitter.
+                                Full Stack Developer | Crafting scalable, user-centric web solutions.
                             </span>
                         </div>
                     </motion.div>
