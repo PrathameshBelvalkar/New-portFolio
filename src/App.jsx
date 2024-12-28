@@ -1,16 +1,21 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import Home from './pages/Home';
 import Layout from './layout';
-import Blog from './pages/Blog';
-
+const Home = lazy(() => import('./pages/Home'));
+const Blog = lazy(() => import('./pages/Blog'));
+const ErrorPage = lazy(() => import('./pages/ErrorPage'));
+const EditBlog = lazy(() => import('./components/Editor/EditBlog'));
 export default function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route index element={<Home />} />
-        <Route path='/blog' element={<Blog />} />
-      </Route>
-    </Routes>
+    <Suspense fallback={<span className='display-6'>Loading...</span>}>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/edit-blog" element={<EditBlog />}></Route>
+          <Route path="*" element={<ErrorPage />} />
+        </Route>
+      </Routes>
+    </Suspense>
   );
 }

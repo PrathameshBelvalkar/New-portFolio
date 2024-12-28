@@ -333,3 +333,11 @@ body {
     background-color: var(--primary-color);
     color: var(--background-color);
 }
+
+.error-text {
+    position: absolute;
+    top: 54%;
+    left: 50%;
+    width: 400px;
+    transform: translate(-50%);
+}

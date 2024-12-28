@@ -1,6 +1,6 @@
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import React from 'react';
-
+import { motion } from "framer-motion";
 const blogData = [
     {
         category: "TECHNOLOGY",
@@ -81,12 +81,18 @@ export default function Blog() {
             <span className='text-muted'>27 December 2024 . {blogData.length} stories</span>
             <div className="blog-list mt-5">
                 {blogData.map((blog, index) => (
-                    <div key={index} className='blog-parent mb-5'>
+                    <motion.div
+                        key={index} className='blog-parent mb-5'
+                        initial={{ filter: "blur(20px)", opacity: 0, y: 50 }}
+                        whileInView={{ filter: "blur(0px)", opacity: 1, y: 0 }}
+                        viewport={{ once: true, amount: 0.3 }}
+                        transition={{ duration: 0.9, ease: "easeOut" }}
+                    >
                         <span className='text-muted category-span'>{blog.category}</span>
                         <h2 className='m-0 fw-bold'>{blog.title}</h2>
                         <p className='m-0 mb-1'>{blog.description}</p>
                         <span className='text-muted category-span'>{blog.date} . {blog.readTime}</span>
-                    </div>
+                    </motion.div>
                 ))}
             </div>
             <div className='mt-3'>
