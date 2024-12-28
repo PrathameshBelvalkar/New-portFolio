@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
-import { Github, Linkedin, Mail, Moon, Paperclip, Sun } from "lucide-react";
+import { BookText, Github, Linkedin, Moon, Paperclip, Sun } from "lucide-react";
 import { Tooltip } from "reactstrap";
 import { ThemeContext } from "../context/ThemeContext";
 
@@ -83,11 +83,9 @@ export default function PersonalLinkDown() {
             />
             <IconWithTooltip
                 id="mail-small"
-                icon={() => <Mail strokeWidth={1.25} />}
+                icon={() => <BookText strokeWidth={1.25} />}
                 tooltipText="Mail"
-                onClick={() =>
-                    window.open("mailto:pprathameshbelvalkar544@gmail.com", "_blank")
-                }
+                onClick={() => window.open('/blog', '_blank')}
             />
             <IconWithTooltip
                 id="download-small"

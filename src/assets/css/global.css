@@ -302,3 +302,51 @@ body {
         display: none;
     }
 }
+
+/* **************** Blog CSS **************** */
+.category-span {
+    font-size: 13px;
+}
+
+.blog-parent {
+    cursor: pointer;
+}
+
+.blog-parent:hover h2 {
+    text-decoration: underline;
+    transition: all 0.5s ease-in-out;
+}
+
+.pagination-button {
+    height: 40px;
+    width: 40px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    border: none;
+    outline: none;
+}
+
+.pagination-button.pagination-current {
+    background-color: var(--primary-color);
+    color: var(--background-color);
+}
+
+.error-text {
+    position: absolute;
+    top: 54%;
+    left: 50%;
+    width: 400px;
+    transform: translate(-50%);
+}
+
+.codex-editor__redactor {
+    padding-bottom: 0px !important;
+}
+
+.blog-link {
+    text-decoration: none;
+    color: var(--primary-color);
+}
