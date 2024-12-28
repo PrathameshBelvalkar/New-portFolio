@@ -345,3 +345,8 @@ body {
 .codex-editor__redactor {
     padding-bottom: 0px !important;
 }
+
+.blog-link {
+    text-decoration: none;
+    color: var(--primary-color);
+}
