@@ -78,8 +78,8 @@ const blogData = [
 export default function Blog() {
     return (
         <div className='stories'>
-            <h1 className='display-4 fw-bold m-0'>Stories</h1>
-            <span className='text-muted'>27 December 2024 . {blogData.length} stories</span>
+            <h1 className='display-4 fw-bold m-0'>Blogs</h1>
+            <span className='text-muted'>Last updated at . 27 December 2024 . {blogData.length} stories</span>
             <div className="blog-list mt-5">
                 {blogData.map((blog, index) => (
                     <motion.div
