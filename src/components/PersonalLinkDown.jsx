@@ -4,7 +4,7 @@ import { BookText, Github, House, Linkedin, Moon, Paperclip, Sun } from "lucide-
 import { Tooltip } from "reactstrap";
 import { ThemeContext } from "../context/ThemeContext";
 
-const IconWithTooltip = ({ id, icon, tooltipText, linkTo, onClick }) => {
+const IconWithTooltip = ({ id, icon, tooltipText, linkTo, onClick, useAnchor }) => {
     const [tooltipOpen, setTooltipOpen] = useState(false);
     const tooltipRef = useRef(null);
 
@@ -27,12 +27,24 @@ const IconWithTooltip = ({ id, icon, tooltipText, linkTo, onClick }) => {
 
     const renderLink = () => {
         if (linkTo) {
-            return linkTo.startsWith("http") ? (
-                <a href={linkTo} target="_blank" rel="noopener noreferrer">
+            return useAnchor ? (
+                <a
+                    href={linkTo}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onMouseEnter={toggleTooltip}
+                    onMouseLeave={toggleTooltip}
+                >
                     {icon()}
                 </a>
             ) : (
-                <Link to={linkTo}>{icon()}</Link>
+                <Link
+                    to={linkTo}
+                    onMouseEnter={toggleTooltip}
+                    onMouseLeave={toggleTooltip}
+                >
+                    {icon()}
+                </Link>
             );
         }
         return <div onClick={onClick}>{icon()}</div>;
@@ -69,12 +81,14 @@ export default function PersonalLinkDown() {
                 icon={() => <Github strokeWidth={1.25} />}
                 tooltipText="GitHub"
                 linkTo="https://github.com/PrathameshBelvalkar"
+                useAnchor={true}
             />
             <IconWithTooltip
                 id="linkedin-small"
                 icon={() => <Linkedin strokeWidth={1.25} />}
                 tooltipText="LinkedIn"
                 linkTo="https://www.linkedin.com/in/prathamesh-belvalkar-83b72a267/"
+                useAnchor={true}
             />
             <IconWithTooltip
                 id="theme-toggle"
@@ -97,12 +111,14 @@ export default function PersonalLinkDown() {
                 }
                 tooltipText={location.pathname !== "/" ? "Home" : "Blog"}
                 linkTo={location.pathname !== "/" ? "/" : "/blog"}
+                useAnchor={false}
             />
             <IconWithTooltip
                 id="download-small"
                 icon={() => <Paperclip strokeWidth={1.25} />}
                 tooltipText="Download Resume"
                 linkTo="/resume.pdf"
+                useAnchor={true}
             />
         </div>
     );
