@@ -6,6 +6,7 @@ import 'react-toastify/dist/ReactToastify.css'
 import ThemeSwitch from '../components/ThemeSwitch'
 import PersonalLinks from '../components/PersonalLinks'
 import PersonalLinkDown from '../components/PersonalLinkDown'
+import { Analytics } from "@vercel/analytics/react"
 export default function Layout() {
     return (
         <main className='portfolio-main'>
@@ -13,6 +14,7 @@ export default function Layout() {
             <Outlet />
             <ThemeSwitch />
             <PersonalLinks />
+            <Analytics />
             <PersonalLinkDown />
         </main>
     )
