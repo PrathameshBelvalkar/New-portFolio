@@ -38,7 +38,7 @@ const projects = [
         description: "The QR Code Generator allows users to create both static and dynamic QR codes for various purposes, enhancing digital interaction and accessibility. It provides an easy-to-use platform for generating QR codes that can be used for websites, and other applications.",
         skills: ["React Js", "Laravel 10", "MySql"],
         image: QrImage,
-        link: "https://qr-code-generator.com"
+        link: "https://qr.silocloud.io/"
     },
     {
         title: "DiverseServices",
@@ -105,7 +105,7 @@ export default function WorkExperience() {
                 animate={{ filter: "blur(0px)", opacity: 1, y: 0 }}
                 transition={{ duration: 1.5, ease: "easeOut" }}
             >
-                <div className="divider mb-2">Projects</div>
+                <div className="divider mb-2">Company Projects</div>
                 {projects.map((project, index) => (
                     <div key={index} className='d-flex d-flex-column-on-small justify-content-between align-items-center mb-3'>
                         <div className='project-image'>
@@ -133,6 +133,7 @@ export default function WorkExperience() {
                         </div>
                     </div>
                 ))}
+                <hr />
             </motion.div>
         </section>
     );
