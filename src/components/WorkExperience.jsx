@@ -38,7 +38,7 @@ const projects = [
         description: "The QR Code Generator allows users to create both static and dynamic QR codes for various purposes, enhancing digital interaction and accessibility. It provides an easy-to-use platform for generating QR codes that can be used for websites, and other applications.",
         skills: ["React Js", "Laravel 10", "MySql"],
         image: QrImage,
-        link: "https://qr-code-generator.com"
+        link: "https://qr.silocloud.io/"
     },
     {
         title: "DiverseServices",
