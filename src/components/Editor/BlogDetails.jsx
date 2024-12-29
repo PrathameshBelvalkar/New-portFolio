@@ -17,14 +17,13 @@ import Hyperlink from "editorjs-hyperlink";
 import { Spinner } from "reactstrap";
 
 export default function BlogDetails() {
-    const { title } = useParams(); // Retrieve the blog title from the URL
+    const { title } = useParams();
     const ejInstance = useRef(null);
     const undoInstance = useRef(null);
     const [blogData, setBlogData] = useState(null);
     const [error, setError] = useState(null);
     const [blogLoading, setBlogLoading] = useState(false);
 
-    // Function to map blog titles to JSON file paths
     const getBlogFilePath = (title) => {
         switch (title) {
             case "Forget ChatGPT & Claude: Here Are 6 (New & Free) AI Tools That Will Blow Your Mind":
@@ -48,11 +47,10 @@ export default function BlogDetails() {
             case "A Comprehensive Guide to FFmpeg: Installation and Basic Commands":
                 return "/FFmpegSolution.json";
             default:
-                return null; // Handle cases where no match is found
+                return null;
         }
     };
 
-    // Function to fetch blog data based on the title
     const fetchBlogData = async () => {
         const filePath = getBlogFilePath(title);
         if (!filePath) {
@@ -77,7 +75,6 @@ export default function BlogDetails() {
         }
     };
 
-    // Function to initialize EditorJS with fetched data
     const initEditor = (data) => {
         if (ejInstance.current) {
             ejInstance.current.destroy();
@@ -88,16 +85,12 @@ export default function BlogDetails() {
             holder: "editorjs",
             data: data,
             autofocus: false,
-            readOnly: true, // Set to true if you want the editor to be read-only
+            readOnly: true,
             onReady: () => {
                 ejInstance.current = editor;
-
-                // Initialize Undo plugin after editor is ready
                 undoInstance.current = new Undo({
                     editor,
                 });
-
-                // Initialize Drag-and-drop plugin
                 new DragDrop(editor);
             },
             onChange: async () => {
@@ -195,21 +188,17 @@ export default function BlogDetails() {
             },
         });
     };
-
-    // Fetch blog data when the component mounts or when the title changes
     useEffect(() => {
         if (!blogData) {
-            fetchBlogData(); // Only fetch if blogData is not available
+            fetchBlogData();
         }
     }, [title, blogData]);
 
-    // Initialize EditorJS when blogData is available
     useEffect(() => {
         if (blogData) {
             initEditor(blogData);
         }
 
-        // Cleanup EditorJS instance on component unmount or before re-initializing
         return () => {
             ejInstance.current?.destroy();
             ejInstance.current = null;

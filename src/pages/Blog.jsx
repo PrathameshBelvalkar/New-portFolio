@@ -1,6 +1,7 @@
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import React from 'react';
 import { motion } from "framer-motion";
+import { Link } from 'react-router-dom';
 
 const blogData = [
     {
@@ -62,7 +63,7 @@ const blogData = [
     {
         category: "TECHNOLOGY",
         title: "PHP8.4 is Here: Discover What's New with Examples!",
-        description: "The latest release of PHP, <b>PHP 8.4,</b> is packed with features that simplify code, improve performance, and align with modern development practices. Here’s a quick look at the highlights...",
+        description: "The latest release of PHP, PHP 8.4, is packed with features that simplify code, improve performance, and align with modern development practices. Here’s a quick look at the highlights...",
         date: "20 December 2024",
         readTime: "5 min"
     },
@@ -86,20 +87,18 @@ export default function Blog() {
                         key={index} className='blog-parent mb-5'
                         initial={{ filter: "blur(20px)", opacity: 0, y: 50 }}
                         whileInView={{ filter: "blur(0px)", opacity: 1, y: 0 }}
-                        viewport={{ once: true, amount: 0.3 }}
+                        viewport={{ once: true, amount: 0.2 }}
                         transition={{ duration: 0.5, ease: "easeOut" }}
                     >
-                        <a
-                            href={`/blog/${blog.title}`}
-                            target="_blank"
-                            rel="noopener noreferrer"
+                        <Link
+                            to={`/blog/${blog.title}`}
                             className='blog-link'
                         >
                             <span className='text-muted category-span'>{blog.category}</span>
                             <h2 className='m-0 fw-bold'>{blog.title}</h2>
                             <p className='m-0 mb-1'>{blog.description}</p>
                             <span className='text-muted category-span'>{blog.date} . {blog.readTime}</span>
-                        </a>
+                        </Link>
                     </motion.div>
                 ))}
             </div>
