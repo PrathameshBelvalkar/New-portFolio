@@ -188,9 +188,17 @@ body {
     transition: all 0.5s ease-in-out;
 }
 
-.personal-link-box svg:focus {
-    border: none;
-    outline: none;
+.personal-link-box a {
+    color: var(--primary-color);
+}
+
+.personal-link-box:hover a {
+    color: var(--background-color);
+}
+
+.lucide:focus {
+    border: none !important;
+    outline: none !important;
 }
 
 .personal-links-box-down {
@@ -347,7 +355,11 @@ body {
 }
 
 .codex-editor__redactor {
-    padding-bottom: 0px !important;
+    padding-bottom: 50px !important;
+}
+
+.cdx-simple-image__caption {
+    display: none;
 }
 
 .blog-link {
