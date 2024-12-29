@@ -1,9 +1,10 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
-import { BookText, Github, Linkedin, Moon, Paperclip, Sun } from "lucide-react";
+import { Link, useLocation } from "react-router-dom";
+import { BookText, Github, House, Linkedin, Moon, Paperclip, Sun } from "lucide-react";
 import { Tooltip } from "reactstrap";
 import { ThemeContext } from "../context/ThemeContext";
 
-const IconWithTooltip = ({ id, icon, tooltipText, onClick }) => {
+const IconWithTooltip = ({ id, icon, tooltipText, linkTo, onClick }) => {
     const [tooltipOpen, setTooltipOpen] = useState(false);
     const tooltipRef = useRef(null);
 
@@ -24,18 +25,30 @@ const IconWithTooltip = ({ id, icon, tooltipText, onClick }) => {
         };
     }, []);
 
+    const renderLink = () => {
+        if (linkTo) {
+            return linkTo.startsWith("http") ? (
+                <a href={linkTo} target="_blank" rel="noopener noreferrer">
+                    {icon()}
+                </a>
+            ) : (
+                <Link to={linkTo}>{icon()}</Link>
+            );
+        }
+        return <div onClick={onClick}>{icon()}</div>;
+    };
+
     return (
         <div
             className="personal-link-box"
-            id={id} // Apply id directly to the container
-            onClick={onClick}
+            id={id}
             style={{ cursor: "pointer" }}
             ref={tooltipRef}
         >
-            {icon()}
+            {renderLink()}
             <Tooltip
                 isOpen={tooltipOpen}
-                target={id} // Use the same id here
+                target={id}
                 toggle={toggleTooltip}
                 placement="top"
             >
@@ -47,6 +60,7 @@ const IconWithTooltip = ({ id, icon, tooltipText, onClick }) => {
 
 export default function PersonalLinkDown() {
     const { theme, toggleTheme } = useContext(ThemeContext);
+    const location = useLocation();
 
     return (
         <div className="personal-links-box-down border p-2">
@@ -54,20 +68,13 @@ export default function PersonalLinkDown() {
                 id="github-small"
                 icon={() => <Github strokeWidth={1.25} />}
                 tooltipText="GitHub"
-                onClick={() =>
-                    window.open("https://github.com/PrathameshBelvalkar", "_blank")
-                }
+                linkTo="https://github.com/PrathameshBelvalkar"
             />
             <IconWithTooltip
                 id="linkedin-small"
                 icon={() => <Linkedin strokeWidth={1.25} />}
                 tooltipText="LinkedIn"
-                onClick={() =>
-                    window.open(
-                        "https://www.linkedin.com/in/prathamesh-belvalkar-83b72a267/",
-                        "_blank"
-                    )
-                }
+                linkTo="https://www.linkedin.com/in/prathamesh-belvalkar-83b72a267/"
             />
             <IconWithTooltip
                 id="theme-toggle"
@@ -82,16 +89,20 @@ export default function PersonalLinkDown() {
                 onClick={toggleTheme}
             />
             <IconWithTooltip
-                id="mail-small"
-                icon={() => <BookText strokeWidth={1.25} />}
-                tooltipText="Mail"
-                onClick={() => window.open('/blog', '_blank')}
+                id="blog-small"
+                icon={(props) =>
+                    location.pathname !== "/"
+                        ? <House strokeWidth={1.25} {...props} />
+                        : <BookText strokeWidth={1.25} {...props} />
+                }
+                tooltipText={location.pathname !== "/" ? "Home" : "Blog"}
+                linkTo={location.pathname !== "/" ? "/" : "/blog"}
             />
             <IconWithTooltip
                 id="download-small"
                 icon={() => <Paperclip strokeWidth={1.25} />}
                 tooltipText="Download Resume"
-                onClick={() => window.open("/resume.pdf", "_blank")}
+                linkTo="/resume.pdf"
             />
         </div>
     );

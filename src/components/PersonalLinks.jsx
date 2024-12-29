@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { BookText, Github, Instagram, Linkedin, Mail, Paperclip } from 'lucide-react';
+import { Link, useLocation } from 'react-router-dom';
+import { BookText, Github, House, Instagram, Linkedin, Mail, Paperclip } from 'lucide-react';
 import { Tooltip } from 'reactstrap'; // Import Tooltip from reactstrap
 
 // Reusable Tooltip Component
-const IconWithTooltip = ({ id, icon, tooltipText, onClick }) => {
+const IconWithTooltip = ({ id, icon, tooltipText, linkTo }) => {
     const [tooltipOpen, setTooltipOpen] = useState(false);
 
     const toggleTooltip = () => {
@@ -11,14 +12,14 @@ const IconWithTooltip = ({ id, icon, tooltipText, onClick }) => {
     };
 
     return (
-        <div className='personal-link-box'
-            onClick={onClick}
-            style={{ cursor: 'pointer' }}>
-            {icon({
-                id,
-                onMouseEnter: toggleTooltip,
-                onMouseLeave: toggleTooltip
-            })}
+        <div className='personal-link-box' style={{ cursor: 'pointer' }}>
+            <Link to={linkTo}>
+                {icon({
+                    id,
+                    onMouseEnter: toggleTooltip,
+                    onMouseLeave: toggleTooltip,
+                })}
+            </Link>
             <Tooltip
                 isOpen={tooltipOpen}
                 target={id}
@@ -32,37 +33,41 @@ const IconWithTooltip = ({ id, icon, tooltipText, onClick }) => {
 };
 
 export default function PersonalLinks() {
+    const location = useLocation();
+
     return (
         <div className='personal-links-box border p-2'>
             <IconWithTooltip
                 id="github"
-                icon={(props) => <Github {...props} />}
+                icon={(props) => <Github strokeWidth={1.25} {...props} />}
                 tooltipText="GitHub"
-                onClick={() => window.open('https://github.com/PrathameshBelvalkar', '_blank')}
+                linkTo="//github.com/PrathameshBelvalkar"
             />
             <IconWithTooltip
                 id="linkedin"
-                icon={(props) => <Linkedin {...props} />}
+                icon={(props) => <Linkedin strokeWidth={1.25} {...props} />}
                 tooltipText="LinkedIn"
-                onClick={() => window.open('https://www.linkedin.com/in/prathamesh-belvalkar-83b72a267/', '_blank')}
+                linkTo="//www.linkedin.com/in/prathamesh-belvalkar-83b72a267/"
             />
             <IconWithTooltip
                 id="stories"
-                icon={(props) => <BookText {...props} />}
-                tooltipText="Stories"
-                onClick={() => window.open('/blog', '_blank')}
+                icon={(props) =>
+                    location.pathname !== '/' ? <House strokeWidth={1.25} {...props} /> : <BookText strokeWidth={1.25} {...props} />
+                }
+                tooltipText={location.pathname !== '/' ? "Home" : "Blog"}
+                linkTo={location.pathname !== '/' ? '/' : '/blog'}
             />
             {/* <IconWithTooltip
                 id="mail"
                 icon={(props) => <Mail {...props} />}
                 tooltipText="Mail"
-                onClick={() => window.open('mailto:pprathameshbelvalkar544@gmail.com', '_blank')}
+                linkTo="mailto:pprathameshbelvalkar544@gmail.com" // Mail link
             /> */}
             <IconWithTooltip
                 id="download"
-                icon={(props) => <Paperclip  {...props} />}
+                icon={(props) => <Paperclip strokeWidth={1.25} {...props} />}
                 tooltipText="Download Resume"
-                onClick={() => window.open('/resume.pdf', '_blank')}
+                linkTo="/resume.pdf"
             />
         </div>
     );
