@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { BookText, Github, House, Linkedin, Moon, Paperclip, Sun } from "lucide-react";
+import { BookText, Github, House, Linkedin, Moon, Paperclip, Sun, Undo2 } from "lucide-react";
 import { Tooltip } from "reactstrap";
 import { ThemeContext } from "../context/ThemeContext";
 
@@ -73,6 +73,7 @@ const IconWithTooltip = ({ id, icon, tooltipText, linkTo, onClick, useAnchor }) 
 export default function PersonalLinkDown() {
     const { theme, toggleTheme } = useContext(ThemeContext);
     const location = useLocation();
+    const isBlogDetailsRoute = /^\/blog\/[^/]+$/.test(location.pathname); // Matches `/blog/:title`
 
     return (
         <div className="personal-links-box-down border p-2">
@@ -114,11 +115,20 @@ export default function PersonalLinkDown() {
                 useAnchor={false}
             />
             <IconWithTooltip
-                id="download-small"
-                icon={() => <Paperclip strokeWidth={1.25} />}
-                tooltipText="Download Resume"
-                linkTo="/resume.pdf"
-                useAnchor={true}
+                key={isBlogDetailsRoute ? "undo2" : "resume"}
+                id="dynamic-icon"
+                icon={() =>
+                    isBlogDetailsRoute ? (
+                        <Undo2 strokeWidth={1.25} />
+                    ) : (
+                        <Paperclip strokeWidth={1.25} />
+                    )
+                }
+                tooltipText={
+                    isBlogDetailsRoute ? "Go to Blog" : "Download Resume"
+                }
+                linkTo={isBlogDetailsRoute ? "/blog" : "/resume.pdf"}
+                useAnchor={!isBlogDetailsRoute}
             />
         </div>
     );
