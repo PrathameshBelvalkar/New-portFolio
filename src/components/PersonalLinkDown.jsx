@@ -127,7 +127,7 @@ export default function PersonalLinkDown() {
                 tooltipText={
                     isBlogDetailsRoute ? "Go to Blog" : "Download Resume"
                 }
-                linkTo={isBlogDetailsRoute ? "/blog" : "/resume.pdf"}
+                linkTo={isBlogDetailsRoute ? "/blog" : "/prathamesh_belvalkar_8329247172.pdf"}
                 useAnchor={!isBlogDetailsRoute}
             />
         </div>
