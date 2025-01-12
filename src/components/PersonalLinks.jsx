@@ -80,7 +80,7 @@ export default function PersonalLinks() {
                 id="download"
                 icon={(props) => <Paperclip strokeWidth={1.25} {...props} />}
                 tooltipText="Download Resume"
-                linkTo="/prathamesh_belvalkar_8329247172.pdf"
+                linkTo="/prathamesh_belvalkar_2025.pdf"
                 useAnchor={true}
             />
         </div>
