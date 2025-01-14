@@ -11,9 +11,8 @@ export default function Aboutus() {
                 <h2 className='headline-text'>About</h2>
                 <div className="about-content">
                     <p className='text-muted'>
-                        Passionate Full Stack Developer with around 2 years of hands-on experience in building user-focused web applications and services. Proficient in modern frontend technologies like <u className='about-dark'>React JS</u>, creating dynamic and responsive user interfaces. Strong expertise in backend frameworks such as <u className='about-dark'>CodeIgniter</u> and <u className='about-dark'>Laravel 10</u>, enabling the development of robust, scalable, and secure solutions. Skilled in designing and implementing <u className='about-dark'>full-stack architectures</u> that integrate seamlessly, delivering exceptional user experiences. Dedicated to continuous learning and innovation, ensuring the delivery of high-quality, performance-driven applications.
+                        Passionate Full Stack Developer with around 2 years of hands-on experience in building user-focused web applications and services. A proactive team leader and problem solver, skilled in driving projects forward and ensuring successful outcomes. Focused on delivering exceptional user experiences while fostering collaboration and continuous innovation in development.
                     </p>
-
                 </div>
             </motion.div>
         </section>

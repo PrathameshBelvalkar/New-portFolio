@@ -43,7 +43,7 @@ export default function ContactUs() {
             <motion.div
                 initial={{ filter: "blur(20px)", opacity: 0, y: 50 }}
                 animate={{ filter: "blur(0px)", opacity: 1, y: 0 }}
-                transition={{ duration: 1.9, ease: "easeOut" }}
+                transition={{ duration: 2.3, ease: "easeOut" }}
             >
                 <h2 className='text-center fw-bold display-3'>Get In Touch</h2>
                 <small className='text-muted'>"Need assistance or have queries? Contact me via the provided form/email for prompt support.

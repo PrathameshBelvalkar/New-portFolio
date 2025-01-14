@@ -366,3 +366,9 @@ body {
     text-decoration: none;
     color: var(--primary-color);
 }
+
+.certificate-image {
+    height: 140px;
+    width: 215px;
+    cursor: pointer;
+}
