@@ -8,7 +8,6 @@ export default function Hero() {
         "नमस्कार, अहं",
         "こんにちは",
         "Hallo, ich bin",
-        "안녕하세요, 저는",
         "Привет, я",
     ];
 

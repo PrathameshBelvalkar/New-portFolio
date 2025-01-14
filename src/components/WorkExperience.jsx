@@ -6,6 +6,8 @@ import CarbonExchnage from "../assets/images/project/CarbonExchange.png";
 import QrImage from "../assets/images/project/QR.png";
 import DiverseImage from "../assets/images/project/DiverseServices.png";
 import Bluemoose from "../assets/images/project/BlueMoose.png";
+import TeamLeader from '../assets/images/icons/TeamLeader';
+import Fancybox from './lib/Fancybox';
 
 const workExperiences = [
     {
@@ -22,37 +24,37 @@ const projects = [
     {
         title: "StreamDeck & Tv",
         description: "StreamDeck is a streaming management tool used for broadcasting and controlling live streams, integrating with TV.silocloud.io. It enables users to program and schedule content using EPG (Electronic Program Guide), providing a seamless streaming experience.",
-        skills: ["React Js", "Laravel 10", "MySql", "FFmpeg", "RTMP", "WebRTC", "Node Js", "Socket.io"],
+        skills: ["Team Leader", "React Js", "Laravel 10", "MySql", "FFmpeg", "RTMP", "WebRTC", "Node Js", "Socket.io"],
         image: StreamDeck,
         link: "https://streamdeck.silocloud.io/"
     },
     {
         title: "CarbonExchange",
         description: "Alexander’s Carbon Exchange is a blockchain-based platform enabling transparent carbon credit trading, connecting producers and buyers to promote sustainable practices and combat climate change for a greener future.",
-        skills: ["Html5 and CSS3", "JavaScript", "MySql", "MapBox API", "REGRID API"],
+        skills: ["Html5 and CSS3", "JavaScript", "jQuery", "MySql", "MapBox API", "REGRID API"],
         image: CarbonExchnage,
         link: "https://carbonexchange.ai"
     },
     {
         title: "QR Code Generator",
         description: "The QR Code Generator allows users to create both static and dynamic QR codes for various purposes, enhancing digital interaction and accessibility. It provides an easy-to-use platform for generating QR codes that can be used for websites, and other applications.",
-        skills: ["React Js", "Laravel 10", "MySql"],
+        skills: ["Team Leader", "React Js", "Laravel 10", "MySql"],
         image: QrImage,
         link: "https://qr.silocloud.io/"
     },
     {
         title: "DiverseServices",
         description: "Diverse Multi Services, LLC offers comprehensive services, including tax preparation, bookkeeping, printing, and notary support, serving the DFW Metroplex and all 50 states to meet diverse community needs.",
-        skills: ["React Js", "Laravel 10", "MySql"],
+        skills: ["Team Leader", "React Js", "Laravel 10", "MySql"],
         image: DiverseImage,
         link: "https://diverseservices.com"
     },
     {
         title: "BlueMoose API",
         description: "Creating an API for bluemoose Tv that will generate subtitles of English Video and translate them using deep translate.",
-        skills: ["React Js", "Laravel 10", "MySql", "Flask", "Python", "Open AI"],
+        skills: ["Team Leader", "React Js", "Laravel 10", "MySql", "Flask", "Python", "Open AI"],
         image: Bluemoose,
-        link: "https://elastic-sutherland.174-143-48-203.plesk.page/"
+        link: "https://centera.live/"
     }
 ];
 
@@ -109,7 +111,17 @@ export default function WorkExperience() {
                 {projects.map((project, index) => (
                     <div key={index} className='d-flex d-flex-column-on-small justify-content-between align-items-center mb-3'>
                         <div className='project-image'>
-                            <img src={project.image} alt={project.title} className='border border-warning border-2 rounded-1' loading='lazy' />
+                            <Fancybox
+                                options={{
+                                    Carousel: {
+                                        infinite: false,
+                                    },
+                                }}
+                            >
+                                <a data-fancybox="gallery" href={project.image} >
+                                    <img src={project.image} alt={project.title} className='border border-warning border-2 rounded-1' loading='lazy' />
+                                </a>
+                            </Fancybox>
                         </div>
                         <div>
                             <div className='d-flex flex-column project-content'>
@@ -125,10 +137,12 @@ export default function WorkExperience() {
                                 <ul className='d-flex list-unstyled flex-wrap'>
                                     {project.skills.map((skill, skillIndex) => (
                                         <li key={skillIndex} className='skill-tag bg-body-secondary'>
+                                            {skill === "Team Leader" && <span className='me-1'><TeamLeader /></span>}
                                             {skill}
                                         </li>
                                     ))}
                                 </ul>
+
                             </div>
                         </div>
                     </div>
