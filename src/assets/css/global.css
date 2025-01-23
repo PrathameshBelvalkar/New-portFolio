@@ -372,3 +372,7 @@ body {
     width: 215px;
     cursor: pointer;
 }
+
+.editor-container {
+    width: 42rem;
+}
