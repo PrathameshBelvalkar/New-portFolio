@@ -1,183 +1,136 @@
-import React, { useEffect, useRef, useState } from "react";
-import EditorJS from "@editorjs/editorjs";
-import Undo from "editorjs-undo";
-import DragDrop from "editorjs-drag-drop";
-import Header from "@editorjs/header";
-import Paragraph from "@editorjs/paragraph";
-import Alert from "editorjs-alert";
-import Table from "@editorjs/table";
-import CodeTool from "@editorjs/code";
-import Marker from "@editorjs/marker";
-import InlineCode from "@editorjs/inline-code";
-import Embed from "@editorjs/embed";
-import SimpleImage from "@editorjs/simple-image";
-import EditorjsList from '@editorjs/list';
-import Hyperlink from "editorjs-hyperlink";
-const DEFAULT_INITIAL_DATA = {
-    "time": 1735367070123,
-    "blocks": [
-        {
-            "id": "xrMqUFXGfQ",
-            "type": "header",
-            "data": {
-                "text": "<b>Sending Email with Laravel 10 and Gmail</b>",
-                "level": 1
-            }
+import YooptaEditor, { createYooptaEditor } from '@yoopta/editor';
+
+import Paragraph from '@yoopta/paragraph';
+import Blockquote from '@yoopta/blockquote';
+import Embed from '@yoopta/embed';
+import Image from '@yoopta/image';
+import Link from '@yoopta/link';
+import Callout from '@yoopta/callout';
+import Video from '@yoopta/video';
+import File from '@yoopta/file';
+import { NumberedList, BulletedList, TodoList } from '@yoopta/lists';
+import { Bold, Italic, CodeMark, Underline, Strike, Highlight } from '@yoopta/marks';
+import { HeadingOne, HeadingThree, HeadingTwo } from '@yoopta/headings';
+import Code from '@yoopta/code';
+import Table from '@yoopta/table';
+import Accordion, { AccordionCommands } from '@yoopta/accordion';
+import Divider from '@yoopta/divider';
+import ActionMenuList, { DefaultActionMenuRender } from '@yoopta/action-menu-list';
+import Toolbar, { DefaultToolbarRender } from '@yoopta/toolbar';
+import LinkTool, { DefaultLinkToolRender } from '@yoopta/link-tool';
+
+import { uploadToCloudinary } from '../../utils/cloudinary';
+import { useMemo, useRef, useState } from 'react';
+import { WITH_BASIC_INIT_VALUE } from './data/initValue';
+const plugins = [
+    File.extend({
+        options: {
+            onUpload: async (file) => {
+                const data = await uploadToCloudinary(file, 'auto');
+
+                return {
+                    src: data.secure_url,
+                    format: data.format,
+                    name: data.name,
+                    size: data.bytes,
+                };
+            },
         },
-    ],
-    "version": "2.30.7"
+    }),
+    Code,
+    Table,
+    Accordion.extend({
+        events: {
+            onBeforeCreate: (editor) => {
+                return AccordionCommands.buildAccordionElements(editor, { items: 2 });
+            },
+        },
+    }),
+    Divider,
+    Paragraph,
+    HeadingOne,
+    HeadingTwo,
+    HeadingThree,
+    Blockquote,
+    Callout,
+    Link,
+    NumberedList,
+    BulletedList,
+    TodoList,
+    Embed,
+    Image.extend({
+        options: {
+            async onUpload(file) {
+                const data = await uploadToCloudinary(file, 'image');
+
+                return {
+                    src: data.secure_url,
+                    alt: 'cloudinary',
+                    sizes: {
+                        width: data.width,
+                        height: data.height,
+                    },
+                };
+            },
+        },
+    }),
+    Video.extend({
+        options: {
+            onUpload: async (file) => {
+                const data = await uploadToCloudinary(file, 'video');
+                return {
+                    src: data.secure_url,
+                    alt: 'cloudinary',
+                    sizes: {
+                        width: data.width,
+                        height: data.height,
+                    },
+                };
+            },
+        },
+    }),
+];
+
+const TOOLS = {
+    ActionMenu: {
+        render: DefaultActionMenuRender,
+        tool: ActionMenuList,
+    },
+    Toolbar: {
+        render: DefaultToolbarRender,
+        tool: Toolbar,
+    },
+    LinkTool: {
+        render: DefaultLinkToolRender,
+        tool: LinkTool,
+    },
 };
 
-export default function EditBlog() {
-    const ejInstance = useRef();
-    const [isReadOnly, setIsReadOnly] = useState(false);
-    const undoInstance = useRef();
+const MARKS = [Bold, Italic, CodeMark, Underline, Strike, Highlight];
 
-    const initEditor = () => {
-        const editor = new EditorJS({
-            holder: "editorjs",
-            onReady: () => {
-                ejInstance.current = editor;
+function EditBlog() {
+    const editor = useMemo(() => createYooptaEditor(), []);
+    const selectionRef = useRef(null);
+    const [value, setValue] = useState(WITH_BASIC_INIT_VALUE);
 
-                // Initialize Undo plugin after editor is ready
-                undoInstance.current = new Undo({
-                    editor,
-                });
-
-                // Initialize Drag-and-drop plugin
-                new DragDrop(editor); // Pass the editor instance to the DragDrop plugin
-            },
-            autofocus: false,
-            data: DEFAULT_INITIAL_DATA,
-            readOnly: false,
-            onChange: async () => {
-                let content = await editor.saver.save();
-                console.log(content);
-            },
-            inlineToolbar: true,
-            tools: {
-                header: { class: Header, inlineToolbar: true },
-                paragraph: { class: Paragraph, inlineToolbar: true },
-                alert: {
-                    class: Alert,
-                    inlineToolbar: true,
-                    shortcut: "CMD+SHIFT+A",
-                    config: {
-                        alertTypes: [
-                            "primary",
-                            "secondary",
-                            "info",
-                            "success",
-                            "warning",
-                            "danger",
-                            "light",
-                            "dark",
-                        ],
-                        defaultType: "primary",
-                        messagePlaceholder: "Enter something",
-                    },
-                },
-                image: {
-                    class: SimpleImage,
-                    inlineToolbar: true,
-                    config: {
-                        placeholder: 'Paste image URL'
-                    }
-                },
-                table: {
-                    class: Table,
-                    inlineToolbar: true,
-                    config: {
-                        rows: 2,
-                        cols: 3,
-                        maxRows: 5,
-                        maxCols: 5,
-                    },
-                },
-                list: {
-                    class: EditorjsList,
-                    inlineToolbar: true,
-                    config: {
-                        defaultStyle: 'unordered'
-                    },
-                },
-                code: { class: CodeTool, inlineToolbar: true },
-                embed: {
-                    class: Embed,
-                    config: {
-                        services: {
-                            youtube: true,
-                            coub: true,
-                            codepen: {
-                                regex: /https?:\/\/codepen.io\/([^\/\?\&]*)\/pen\/([^\/\?\&]*)/,
-                                embedUrl:
-                                    "https://codepen.io/<%= remote_id %>?height=300&theme-id=0&default-tab=css,result&embed-version=2",
-                                html: "<iframe height='300' scrolling='no' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'></iframe>",
-                                height: 300,
-                                width: 600,
-                                id: (groups) => groups.join("/embed/"),
-                            },
-                        },
-                    },
-                },
-                Marker: {
-                    class: Marker,
-                },
-                hyperlink: {
-                    class: Hyperlink,
-                    config: {
-                        shortcut: 'CMD+L',
-                        target: '_blank',
-                        rel: 'nofollow',
-                        availableTargets: ['_blank', '_self'],
-                        availableRels: ['author', 'noreferrer'],
-                        validate: false,
-                    }
-                },
-                inlineCode: {
-                    class: InlineCode,
-                    shortcut: "CMD+SHIFT+M",
-                },
-            },
-        });
+    const onChange = (value) => {
+        setValue(value);
     };
 
-    const toggleReadOnly = () => {
-        setIsReadOnly((prevReadOnly) => !prevReadOnly); // Toggle the state
-        ejInstance.current.readOnly.toggle(); // Toggle readOnly in EditorJS instance
-    };
-
-    const logEditorData = async () => {
-        if (ejInstance.current) {
-            const savedData = await ejInstance.current.saver.save(); // Save current editor data
-            console.log(savedData); // Log the saved data
-        }
-    };
-
-    const undo = () => {
-        if (undoInstance.current) {
-            undoInstance.current.undo();
-        }
-    };
-
-    const redo = () => {
-        if (undoInstance.current) {
-            undoInstance.current.redo();
-        }
-    };
-
-    // This will run only once
-    useEffect(() => {
-        if (ejInstance.current === null) {
-            initEditor();
-        }
-
-        return () => {
-            ejInstance?.current?.destroy();
-            ejInstance.current = null;
-        };
-    }, []);
     return (
-        <div id="editorjs"></div>
-    )
+        <div className="editor-container" ref={selectionRef}>
+            <YooptaEditor
+                editor={editor}
+                plugins={plugins}
+                tools={TOOLS}
+                marks={MARKS}
+                selectionBoxRoot={selectionRef}
+                width="100%"
+                autoFocus
+                value={value}
+                onChange={onChange}
+            />
+        </div>
+    );
 }
+export default EditBlog;

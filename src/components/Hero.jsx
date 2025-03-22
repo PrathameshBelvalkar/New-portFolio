@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import HeroImage from "../assets/images/hero_image.png";
+import HeroImage from "../assets/images/new_avatar.png";
 
 export default function Hero() {
     const texts = [

@@ -15,6 +15,7 @@ import SimpleImage from "@editorjs/simple-image";
 import EditorjsList from "@editorjs/list";
 import Hyperlink from "editorjs-hyperlink";
 import { Spinner } from "reactstrap";
+import { Helmet } from "react-helmet";
 
 export default function BlogDetails() {
     const { title } = useParams();
@@ -212,5 +213,16 @@ export default function BlogDetails() {
         return <div className="error-message">{error}</div>;
     }
 
-    return <div id="editorjs"></div>;
+    return (
+        <>
+            <Helmet>
+                <title>{blogData?.title || "Blog Details"} - Prathamesh Belvalkar</title>
+                <meta name="description" content={blogData?.description || "Read detailed blog content"} />
+                <meta property="og:title" content={blogData?.title || "Blog Details"} />
+                <meta property="og:description" content={blogData?.description || "Read detailed blog content"} />
+                <meta property="og:url" content={`https://prathameshportfolio.vercel.app/blog/${title}`} />
+            </Helmet>
+            <div id="editorjs"></div>
+        </>
+    );
 }

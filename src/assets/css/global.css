@@ -372,3 +372,22 @@ body {
     width: 215px;
     cursor: pointer;
 }
+
+.editor-container {
+    width: 42rem;
+}
+
+/* *******editor action css******** */
+/* .yoopta-action-menu-list-content {
+    background: var(--editor-action-list) !important;
+    border: 1px solid var(--background-color) !important;
+}
+
+
+.yoo-action-menu-flex {
+    background-color: var(--editor-action-menu-buttons) !important;
+}
+
+.yoopta-button:hover {
+    background-color: var(--editor-action-buttons) !important;
+} */
