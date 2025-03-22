@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from "framer-motion";
 import ResponsiveWeb from "../assets/images/certificates/ResponsiveWeb.png";
+import ReactCertificate from "../assets/images/certificates/React.jpg";
 import Tanstack from "../assets/images/certificates/TanstackQuery.jpg";
 import MoreSoon from "../assets/images/certificates/more_certificate.png";
 import Fancybox from './lib/Fancybox';
@@ -49,11 +50,24 @@ export default function Certificates() {
                                 },
                             }}
                         >
+                            <a data-fancybox="gallery" href={ReactCertificate} >
+                                <img src={ReactCertificate} alt="React Js certification" className='certificate-image' />
+                            </a>
+                        </Fancybox>
+                    </div>
+                    {/* <div className="col-md-4 col-sm-4 mb-1">
+                        <Fancybox
+                            options={{
+                                Carousel: {
+                                    infinite: false,
+                                },
+                            }}
+                        >
                             <a data-fancybox="gallery" href={MoreSoon} >
                                 <img src={MoreSoon} alt="More certificates coming soon" className='certificate-image' />
                             </a>
                         </Fancybox>
-                    </div>
+                    </div> */}
                 </div>
                 <hr />
             </motion.div>

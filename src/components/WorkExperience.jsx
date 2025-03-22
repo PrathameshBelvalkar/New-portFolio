@@ -11,14 +11,23 @@ import Fancybox from './lib/Fancybox';
 
 const workExperiences = [
     {
+        role: "SDE-I Developer",
+        company: "Ramee Systems",
+        duration: "Feb 2025 - Present",
+        description: "Building robust and scalable web applications with a focus on performance, security, and user experience. Implementing modern frontend architectures, optimizing database queries, and ensuring seamless API integrations. Collaborating with designers and backend teams to create intuitive, high-quality digital products that meet business and user needs.",
+        skills: ["React Js", "JavaScript", "PHP", "MySQL", "Laravel 10", "CodeIgniter 4", "Express Js", "Tailwind CSS", "Git", "GitHub", "Gitlab"],
+        link: "https://rameesystems.com"
+    },
+    {
         role: "Full Stack Developer",
         company: "Noitavonne",
         duration: "Aug 2023 - Dec 2024",
-        description: "Expert in crafting responsive, user-centric interfaces, ensuring seamless frontend-backend integration. Conducted thorough user research, implemented pixel-perfect designs, and delivered scalable, user-friendly web applications focused on usability, efficiency, and modern standards.",
+        description: "Designed and developed scalable web applications, focusing on optimizing user experience and system efficiency. Built reusable components, streamlined API integrations, and implemented best practices for code maintainability. Worked closely with cross-functional teams to deliver high-quality software solutions that aligned with business goals.",
         skills: ["React Js", "JavaScript", "PHP", "MySQL", "Laravel 10", "CodeIgniter 3", "Express Js", "HTML5 and CSS3", "Bootstrap 5", "Tailwind CSS", "Git", "GitHub"],
         link: "https://www.noitavonne.com"
     }
 ];
+
 
 const projects = [
     {
