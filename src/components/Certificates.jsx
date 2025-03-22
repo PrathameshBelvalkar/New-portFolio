@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import ResponsiveWeb from "../assets/images/certificates/ResponsiveWeb.png";
 import ReactCertificate from "../assets/images/certificates/React.jpg";
 import Tanstack from "../assets/images/certificates/TanstackQuery.jpg";
-import MoreSoon from "../assets/images/certificates/more_certificate.png";
 import Fancybox from './lib/Fancybox';
 
 export default function Certificates() {
